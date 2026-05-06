@@ -3,19 +3,19 @@ import axios from "axios";
 
 // Fetch all products
 export const getAllProducts = createAsyncThunk("products/getproducts", async () => {
-    const response = await axios.get(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/products`);
+    const response = await axios.get(`${import.meta.env.REACT_APP_BACKEND_URL}/api/products`);
     return response.data;
 });
 
 // Fetch a single product
 export const getSingleProduct = createAsyncThunk("products/getsingleproduct", async (id) => {
-    const response = await axios.get(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/products/${id}`);
+    const response = await axios.get(`${import.meta.env.REACT_APP_BACKEND_URL}/api/products/${id}`);
     return response.data;
 });
 
 // Create a product (including image upload)
 export const createProduct = createAsyncThunk('products/createProduct', async (formData) => {
-    const response = await axios.post(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/products`, formData, {
+    const response = await axios.post(`${import.meta.env.REACT_APP_BACKEND_URL}/api/products`, formData, {
         headers: {
             'Content-Type': 'multipart/form-data',
         },
@@ -26,13 +26,13 @@ export const createProduct = createAsyncThunk('products/createProduct', async (f
 
 // Update a product
 export const updateProduct = createAsyncThunk("products/updateproduct", async ({ productId, updatedProduct }) => {
-    const response = await axios.put(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/products/${productId}`, updatedProduct); // Use PUT for update
+    const response = await axios.put(`${import.meta.env.REACT_APP_BACKEND_URL}/api/products/${productId}`, updatedProduct); // Use PUT for update
     return response.data;
 });
 
 // Delete a product
 export const deleteProduct = createAsyncThunk("products/deleteproduct", async (id) => {
-    const response = await axios.delete(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/products/${id}`,{withCredentials:true});
+    const response = await axios.delete(`${import.meta.env.REACT_APP_BACKEND_URL}/api/products/${id}`,{withCredentials:true});
     return response.data;
 });
 

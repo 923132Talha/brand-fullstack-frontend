@@ -2,13 +2,13 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getCart = createAsyncThunk("cart/getcart", async () => {
-    const response = await axios.get(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/cart`, { withCredentials: true });
+    const response = await axios.get(`${import.meta.env.REACT_APP_BACKEND_URL}/api/cart`, { withCredentials: true });
     return response.data;
 });
 
 export const addToCart = createAsyncThunk("cart/addtocart", async ({ productId, quantity }, { rejectWithValue }) => {
     try {
-        const response = await axios.post(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/cart/add`, { productId, quantity }, { headers: { "Content-Type": "application/json" }, withCredentials: true });
+        const response = await axios.post(`${import.meta.env.REACT_APP_BACKEND_URL}/api/cart/add`, { productId, quantity }, { headers: { "Content-Type": "application/json" }, withCredentials: true });
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response ? error.response.data : "Something went wrong!");
@@ -16,7 +16,7 @@ export const addToCart = createAsyncThunk("cart/addtocart", async ({ productId, 
 });
 
 export const deletefromCart = createAsyncThunk("cart/deletefromcart", async (productId) => {
-    const response = await axios.delete(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/cart/delete`,
+    const response = await axios.delete(`${import.meta.env.REACT_APP_BACKEND_URL}/api/cart/delete`,
         {
             data: { productId },
             headers: { "Content-Type": "application/json" },
@@ -26,7 +26,7 @@ export const deletefromCart = createAsyncThunk("cart/deletefromcart", async (pro
 });
 
 export const clearCart = createAsyncThunk("cart/clearcart", async () => {
-    const response = await axios.delete(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/cart/clearcart`, { withCredentials: true });
+    const response = await axios.delete(`${import.meta.env.REACT_APP_BACKEND_URL}/api/cart/clearcart`, { withCredentials: true });
     return response.data;
 })
 

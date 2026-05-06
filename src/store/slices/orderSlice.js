@@ -2,12 +2,12 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const codOrder = createAsyncThunk("order/codorder", async (orderData) => {
-    const response = await axios.post(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/order/codorder`, orderData, { headers: { "Content-Type": "application/json" }, withCredentials: true });
+    const response = await axios.post(`${import.meta.env.REACT_APP_BACKEND_URL}/api/order/codorder`, orderData, { headers: { "Content-Type": "application/json" }, withCredentials: true });
     return response.data;
 });
 
 export const confirmOrder = createAsyncThunk("order/confirmorder", async (sessionid) => {
-    const response = await axios.post(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/order/confirmorder`, {sessionid}, { withCredentials: true });
+    const response = await axios.post(`${import.meta.env.REACT_APP_BACKEND_URL}/api/order/confirmorder`, {sessionid}, { withCredentials: true });
     return response.data;
 });
 
