@@ -13,9 +13,9 @@ import ProductList from './admin/ProductList'
 import Users from "./admin/Users"
 import Orders from './admin/Orders'
 import ShippingDetails from './pages/ShippingDetails'
-import OrderSuccess from './pages/orderSuccess'
+import OrderSuccess from './pages/OrderSuccess'
 import OrderCancel from "./pages/OrderCancel"
-import OrderPlaced from './pages/orderPlaced'
+import OrderPlaced from './pages/OrderPlaced'
 
 const App = () => {
 
