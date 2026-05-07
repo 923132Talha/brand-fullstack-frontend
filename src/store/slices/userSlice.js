@@ -2,20 +2,20 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getUser = createAsyncThunk("user/getuser", async () => {
-    const response = await axios.get(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/user`);
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/user`);
     return response.data;
 });
 
 // Check if the user is authenticated
 export const checkUser = createAsyncThunk("user/auth", async () => {
-    const response = await axios.get(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/user/check`, { withCredentials: true });
+    const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/user/check`, { withCredentials: true });
     return response.data;
 });
 
 // Register user
 export const registerUser = createAsyncThunk("user/register", async (userData, { rejectWithValue }) => {
     try {
-        const response = await axios.post(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/user/signup`, userData, { withCredentials: true });
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/user/signup`, userData, { withCredentials: true });
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response?.data?.msg || "Registration failed"); // Handling error message
@@ -25,7 +25,7 @@ export const registerUser = createAsyncThunk("user/register", async (userData, {
 // Login user
 export const loginUser = createAsyncThunk("user/login", async (userData, { rejectWithValue }) => {
     try {
-        const response = await axios.post(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/user/login`, userData, { withCredentials: true });
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/user/login`, userData, { withCredentials: true });
         return response.data;
     } catch (error) {
         return rejectWithValue(error.response?.data?.msg || "Login failed"); // Handling error message
@@ -34,7 +34,7 @@ export const loginUser = createAsyncThunk("user/login", async (userData, { rejec
 
 // Logout user
 export const logoutUser = createAsyncThunk("user/logout", async () => {
-    const response = await axios.post(`http://${import.meta.env.REACT_APP_BACKEND_URL}/api/user/logout`, {}, { withCredentials: true });
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/user/logout`, {}, { withCredentials: true });
     return response.data;
 });
 

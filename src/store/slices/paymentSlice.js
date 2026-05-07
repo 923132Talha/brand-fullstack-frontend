@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const createCheckoutSession = createAsyncThunk("payment/createcheckoutsession", async (orderData) => {
-    const response = await axios.post(`${import.meta.env.REACT_APP_BACKEND_URL}/api/payment/createcheckoutsession`, orderData, { headers: { "Content-Type": "application/json" }, withCredentials: true });
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/payment/createcheckoutsession`, orderData, { headers: { "Content-Type": "application/json" }, withCredentials: true });
     return response.data;
 });
 
